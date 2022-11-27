@@ -21,5 +21,6 @@ public class FactorySpaceShip implements AbstractFactory<SpaceShip>  {
             return new ShipStar(new Vector2D(RESPAWN_X, RESPAWN_Y));
         }
         return null;
+        //return null;
     }
 }
