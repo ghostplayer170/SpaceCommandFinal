@@ -21,10 +21,11 @@ import static Functions.Functions.*;
 
 public class GameState {
 
-    private PlayerShip player;
+    private final PlayerShip player;
     private int asteroids;
     private int asteroidsDestroyed;
-    private ArrayList<MovingObject> movingObjects = new ArrayList<>();
+    private int asteroidsCreated;
+    private final ArrayList<MovingObject> movingObjects = new ArrayList<>();
     private int score;
     private boolean gameOver;
 
@@ -34,18 +35,26 @@ public class GameState {
         movingObjects.add(player);
         asteroids = 1;
         asteroidsDestroyed = 0;
-        startWave(1);
+        asteroidsCreated = 0;
+        startWave();
     }
 
-    private void startWave(int ast){
-        double x, y;
-        for(int i=0; i<ast; ++i){
-            x = Math.random() * MainFrame.WIDTH-75;
-            y = MainFrame.HEIGHT+100;
-            BufferedImage texture = Assets.bigs[(int)(Math.random()*Assets.bigs.length)];
-            movingObjects.add(new Asteroid(new Vector2D(x,y), texture, this));
+    private void startWave(){
+        if(asteroidsCreated==asteroidsDestroyed){
+            for(int i=0; i<asteroids; ++i){
+                createAsteroids();
+                ++asteroidsCreated;
+            }
+            ++asteroids;
         }
-        ++asteroids;
+    }
+
+    private void createAsteroids(){
+        double x, y;
+        x = Math.random() * MainFrame.WIDTH-75;
+        y = MainFrame.HEIGHT+100;
+        BufferedImage texture = Assets.bigs[(int)(Math.random()*Assets.bigs.length)];
+        movingObjects.add(new Asteroid(new Vector2D(x,y), texture, this));
     }
 
     public PlayerShip loadPlayer(){
@@ -61,17 +70,15 @@ public class GameState {
     }
 
     public void update(){
-        for (int i=0;i<movingObjects.size();++i) {
-            movingObjects.get(i).update();
+        for (MovingObject movingObject : movingObjects) {
+            movingObject.update();
         }
-        if((asteroids-1) == asteroidsDestroyed) {
-            startWave(asteroids);
-        }
+        startWave();
     }
 
     public void paintComponent(GamePanel g) {
-        for (int i = 0;i<movingObjects.size();++i){
-            movingObjects.get(i).paintComponent(g);
+        for (MovingObject movingObject : movingObjects) {
+            movingObject.paintComponent(g);
         }
         drawScore(g);
     }
