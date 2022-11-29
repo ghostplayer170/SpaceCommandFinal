@@ -25,7 +25,7 @@ public class GameState {
     private int asteroids;
     private int asteroidsDestroyed;
     private int asteroidsCreated;
-    private final ArrayList<MovingObject> movingObjects = new ArrayList<>();
+    private ArrayList<MovingObject> movingObjects = new ArrayList<>();
     private int score;
     private boolean gameOver;
 
@@ -70,15 +70,15 @@ public class GameState {
     }
 
     public void update(){
-        for (MovingObject movingObject : movingObjects) {
-            movingObject.update();
+        for (int i=0;i<movingObjects.size();++i) {
+            movingObjects.get(i).update();
         }
         startWave();
     }
 
     public void paintComponent(GamePanel g) {
-        for (MovingObject movingObject : movingObjects) {
-            movingObject.paintComponent(g);
+        for (int i = 0;i<movingObjects.size();++i){
+            movingObjects.get(i).paintComponent(g);
         }
         drawScore(g);
     }

@@ -61,3 +61,5 @@ Unknown_Player,ShipLight,RED,22;
 Unknown_Player,ShipHeavy,RED,24;
 Unknown_Player,ShipLight,RED,2;
 Unknown_Player,ShipLight,RED,2;
+Unknown_Player,ShipLight,RED,32;
+Unknown_Player,ShipLight,BLUE,2;
