@@ -5,30 +5,40 @@ import Graphics.Assets;
 import ObjectsGame.*;
 import Factory.*;
 import ObjectsGame.Types.TypeColor;
-
 import javax.swing.*;
 
 public class SelectionPanel extends CardsPanel {
-
-    public static final int WIDTHBTN = 120, HEIGHTBTN = 85; //DIMENSIONES DE BOTONES
-
+    public final int WIDTHBTN = 120, HEIGHTBTN = 85; //DIMENSIONES DE BOTONES
+    private final FactorySpaceShip factory;
     public SelectionPanel() {
-        setLayout(null);
         Assets.init();
+        factory = new FactorySpaceShip();
+        buildPanel();
+    }
+    private void buildPanel(){
+        setLayout(null);
+
         backButton = new JButton("BACK");
         backButton.setBounds(10,10,70,25);
+
         selection1Label = new JLabel("ENTER YOUR NAME");
         selection1Label.setBounds(390,60,200,30);
+
         nameField = new JTextField();
         nameField.setBounds(350,100,200,30);
+
         selection2Label = new JLabel("SELECT YOUR SHIP");
         selection2Label.setBounds(390,190,200,30);
+
         selLightLabel = new JLabel("LIGHT CRUISER");
         selLightLabel.setBounds(75,280,200,30);
+
         selHeavyLabel = new JLabel("HEAVY CRUISER");
         selHeavyLabel.setBounds(75,405,200,30);
+
         selStarLabel = new JLabel("STAR CRUISER");
         selStarLabel.setBounds(75,530,200,30);
+
         //LIGHTCRUISER
         shipLightButtonR = new JButton();
         shipLightButtonR.setIcon(new ImageIcon(Assets.lightCruiserRed));
@@ -39,6 +49,7 @@ public class SelectionPanel extends CardsPanel {
         shipLightButtonG = new JButton();
         shipLightButtonG.setIcon(new ImageIcon(Assets.lightCruiserGreen));
         shipLightButtonG.setBounds(650,250,WIDTHBTN,HEIGHTBTN);
+
         //HEAVYCRUISER
         shipHeavyButtonR = new JButton();
         shipHeavyButtonR.setIcon(new ImageIcon(Assets.heavyCruiserRed));
@@ -49,6 +60,7 @@ public class SelectionPanel extends CardsPanel {
         shipHeavyButtonG = new JButton();
         shipHeavyButtonG.setIcon(new ImageIcon(Assets.heavyCruiserGreen));
         shipHeavyButtonG.setBounds(650,380,WIDTHBTN,HEIGHTBTN);
+
         //STARCRUISER
         shipStarButtonR = new JButton();
         shipStarButtonR.setIcon(new ImageIcon(Assets.starCruiserRed));
@@ -59,22 +71,28 @@ public class SelectionPanel extends CardsPanel {
         shipStarButtonG = new JButton();
         shipStarButtonG.setIcon(new ImageIcon(Assets.starCruiserGreen));
         shipStarButtonG.setBounds(650,510,WIDTHBTN,HEIGHTBTN);
-        add(nameField);
-        add(selection1Label);
+
         add(backButton);
+        add(nameField);
+
+        add(selection1Label);
         add(selection2Label);
-        add(shipLightButtonR);
-        add(shipHeavyButtonR);
-        add(shipStarButtonR);
-        add(shipLightButtonB);
-        add(shipHeavyButtonB);
-        add(shipStarButtonB);
-        add(shipLightButtonG);
-        add(shipHeavyButtonG);
-        add(shipStarButtonG);
         add(selHeavyLabel);
         add(selLightLabel);
         add(selStarLabel);
+
+        add(shipLightButtonR);
+        add(shipHeavyButtonR);
+        add(shipStarButtonR);
+
+        add(shipLightButtonB);
+        add(shipHeavyButtonB);
+        add(shipStarButtonB);
+
+        add(shipLightButtonG);
+        add(shipHeavyButtonG);
+        add(shipStarButtonG);
+
         shipLightButtonR.addActionListener(e -> selectedPlayer(shipLightButtonR));
         shipLightButtonB.addActionListener(e -> selectedPlayer(shipLightButtonB));
         shipLightButtonG.addActionListener(e -> selectedPlayer(shipLightButtonG));
@@ -86,11 +104,9 @@ public class SelectionPanel extends CardsPanel {
         shipHeavyButtonG.addActionListener(e -> selectedPlayer(shipHeavyButtonG));
         backButton.addActionListener(e-> ControlCards.showStartPnl());
     }
-
     private void selectedPlayer(JButton btn){
         //PLAYER SELECTION
         PlayerShip player = null;
-        FactorySpaceShip factory = new FactorySpaceShip();
         if(btn.equals(shipLightButtonR)){
             player = (PlayerShip) factory.create("ShipLight");
             player.setColor(TypeColor.RED);
@@ -120,7 +136,9 @@ public class SelectionPanel extends CardsPanel {
             player.setColor(TypeColor.GREEN);
         }
         if(!nameField.getText().isEmpty())
-            player.setPilot(nameField.getText());
+            if (player != null) {
+                player.setPilot(nameField.getText());
+            }
         SaveAndLoad.savePlayer(player);
         ControlCards.showGamePnl();
     }

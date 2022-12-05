@@ -2,13 +2,11 @@ package Gui;
 
 import javax.swing.*;
 import java.awt.*;
-
 public class MainFrame extends JFrame{
 
     public static final int WIDTH = 900, HEIGHT = 700; //DIMENSIONES DE LA VENTANA
     public final CardLayout cardLayout;
     public final JPanel framePanel;
-    private Thread thread;
 
     public MainFrame(){
         setTitle("SPACE COMMAND");

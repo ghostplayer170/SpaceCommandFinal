@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 public class SaveAndLoad {
 
-    public SaveAndLoad() {}
+    public SaveAndLoad() {
+
+    }
 
     //SAVE PLAYER DATA
     public static void savePlayer(PlayerShip player) {

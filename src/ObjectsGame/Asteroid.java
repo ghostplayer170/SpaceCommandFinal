@@ -11,8 +11,9 @@ import java.awt.image.BufferedImage;
 
 public class Asteroid extends MovingObject{
 
-    private int speed;
-    private boolean diagonalRight, diagonalLeft;
+    private final int speed;
+    private final boolean diagonalRight;
+    private final boolean diagonalLeft;
 
     public Asteroid(Vector2D pos, BufferedImage texture, GameState gs) {
         super(pos);
@@ -36,9 +37,9 @@ public class Asteroid extends MovingObject{
         if(position.getY() > MainFrame.HEIGHT)
             position.setY(-100);
         position.setY(getPosition().getY()+speed);
-        if(diagonalRight==true && diagonalLeft==false)
+        if(diagonalRight && !diagonalLeft)
             position.setX(getPosition().getX()+speed);
-        if(diagonalRight==false && diagonalLeft==true)
+        if(!diagonalRight && diagonalLeft)
             position.setX(getPosition().getX()-speed);
     }
 
@@ -55,10 +56,7 @@ public class Asteroid extends MovingObject{
 
     private boolean isDiagonal(){
         int rnd = (int) (Math.random() * 10);
-        if(rnd%2==0)
-            return true;
-        else
-            return false;
+        return rnd % 2 == 0;
     }
 
     public void destroy(){

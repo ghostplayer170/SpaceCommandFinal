@@ -1,7 +1,5 @@
 package Gui;
 
-import Gui.MainFrame;
-
 public class ControlCards {
     private static MainFrame window;
     public ControlCards(MainFrame frame) {

@@ -3,7 +3,6 @@ package ObjectsGame;
 import ObjectsGame.Types.TypeObject;
 import States.GameState;
 import Math.Vector2D;
-
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -39,7 +38,7 @@ public abstract class MovingObject extends GameObject {
     private void objectCollision(MovingObject a, MovingObject b){
         if(!(a instanceof Asteroid && b instanceof Asteroid)
                 && !((a.getType().equals(TypeObject.PlayerShip) && b instanceof Laser)
-                    || b.getType().equals(TypeObject.PlayerShip) && a instanceof Laser)){
+                        || b.getType().equals(TypeObject.PlayerShip) && a instanceof Laser)){
             a.destroy();
             b.destroy();
         }

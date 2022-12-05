@@ -20,7 +20,6 @@ import static Functions.Functions.*;
  */
 
 public class GameState {
-
     private final PlayerShip player;
     private int asteroids;
     private int asteroidsDestroyed;
@@ -28,36 +27,29 @@ public class GameState {
     private ArrayList<MovingObject> movingObjects = new ArrayList<>();
     private int score;
     private boolean gameOver;
-
     public GameState(){
         player = loadPlayer();
-        player.setGameState(this);
         movingObjects.add(player);
         asteroids = 1;
         asteroidsDestroyed = 0;
         asteroidsCreated = 0;
         startWave();
     }
-
     private void startWave(){
         if(asteroidsCreated==asteroidsDestroyed){
-            for(int i=0; i<asteroids; ++i){
-                createAsteroids();
-                ++asteroidsCreated;
-            }
+            for(int i=0; i<asteroids; ++i) createAsteroids();
             ++asteroids;
         }
     }
-
     private void createAsteroids(){
         double x, y;
         x = Math.random() * MainFrame.WIDTH-75;
         y = MainFrame.HEIGHT+100;
         BufferedImage texture = Assets.bigs[(int)(Math.random()*Assets.bigs.length)];
         movingObjects.add(new Asteroid(new Vector2D(x,y), texture, this));
+        ++asteroidsCreated;
     }
-
-    public PlayerShip loadPlayer(){
+    private PlayerShip loadPlayer(){
         ArrayList<String> playerData = new SaveAndLoad().loadShip();
         FactorySpaceShip Factory = new FactorySpaceShip();
         String playerName = playerData.get(0);
@@ -66,31 +58,27 @@ public class GameState {
         PlayerShip playerShip = (PlayerShip) Factory.create(playerType);
         playerShip.setPilot(playerName);
         playerShip.setColor(toEnumColor(playerColor));
+        playerShip.setGameState(this);
         return playerShip;
     }
-
     public void update(){
         for (int i=0;i<movingObjects.size();++i) {
             movingObjects.get(i).update();
         }
         startWave();
     }
-
     public void paintComponent(GamePanel g) {
-        for (int i = 0;i<movingObjects.size();++i){
+        for (int i = 0;i<movingObjects.size();++i) {
             movingObjects.get(i).paintComponent(g);
         }
         drawScore(g);
     }
-
     public ArrayList<MovingObject> getMovingObjects() {
         return movingObjects;
     }
-
     public void addScore(int value){
         score += value;
     }
-
     private void drawScore(GamePanel g){
         Vector2D pos = new Vector2D(800, 25);
         String scoreToString = Integer.toString(score);
@@ -101,17 +89,14 @@ public class GameState {
             pos.setX(pos.getX() + 20);
         }
     }
-
-    public void setAsteroidsDestroyed(int asteroidsDestroyed) {
-        this.asteroidsDestroyed += asteroidsDestroyed;
+    public void setAsteroidsDestroyed(int destroyed) {
+        this.asteroidsDestroyed += destroyed;
     }
-
     public void gameOver(){
         SaveAndLoad.saveHistory(player,score);
         Timer timer = new Timer (750, e -> gameOver = true);
         timer.start();
     }
-
     public boolean isGameOver() {
         return this.gameOver;
     }

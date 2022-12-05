@@ -19,8 +19,6 @@ public abstract class PlayerShip extends MovingObject implements SpaceShip {
     protected TypeColor playerTypeColor;
     protected TypeShip playerType;
     protected String pilot;
-    protected long time;
-    protected long lastTime;
     protected double speed;
     protected int fireRate;
     protected Chronometer fire;
@@ -35,8 +33,6 @@ public abstract class PlayerShip extends MovingObject implements SpaceShip {
         playerType = null;
         playerTypeColor = null;
         pilot = "Unknown_Player";
-        time = 0;
-        lastTime = System.currentTimeMillis();
     }
 
     public TypeShip getPlayerType(){
@@ -59,6 +55,7 @@ public abstract class PlayerShip extends MovingObject implements SpaceShip {
         this.gameState = gameState;
     }
     public void move() {
+
         //MOVEMENT
         if(KeyBoard.RIGHT)
             position.setX(position.getX()+speed);
@@ -68,6 +65,7 @@ public abstract class PlayerShip extends MovingObject implements SpaceShip {
             position.setY(position.getY()-speed);
         if(KeyBoard.DOWN)
             position.setY(position.getY()+speed);
+
         //LIMITS SCREEN
         if(position.getX() < -15)
             position.setX(-15);
