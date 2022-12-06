@@ -19,14 +19,11 @@ public abstract class Functions {
         return TypeColor.BLUE;
     }
     public static JLabel imageToJLabel(BufferedImage im){
-        BufferedImage img = im;
-        Image dmg = img.getScaledInstance(80, 60, Image.SCALE_SMOOTH);
+        Image dmg = im.getScaledInstance(80, 60, Image.SCALE_SMOOTH);
         return new JLabel(new ImageIcon(dmg));
     }
-    public static JLabel imageToJLabelScore(BufferedImage im){
-        BufferedImage img = im;
-        Image dmg = img;
-        return new JLabel(new ImageIcon(dmg));
+    public static JLabel imageToJLabelNoScale(BufferedImage im){
+        return new JLabel(new ImageIcon(im));
     }
     public static ArrayList<String> loadPlayerData (String linea){
         StringBuilder aux = new StringBuilder();
@@ -47,5 +44,17 @@ public abstract class Functions {
             }
         }
         return playerData;
+    }
+    public static ArrayList<ArrayList<String>> topFivePlayers (ArrayList<ArrayList<String>> playersDataHistory){
+        ArrayList<ArrayList<String>> topFive = new ArrayList<>();
+        int aux = playersDataHistory.size()-1;
+        for(int i=0; i<5; ++i){
+            topFive.add(playersDataHistory.get(aux));
+            --aux;
+        }
+        return topFive;
+    }
+    public static ArrayList<String> playerDataFromHistory (ArrayList<ArrayList<String>> playersDataHistory){
+        return playersDataHistory.get(playersDataHistory.size()-1);
     }
 }

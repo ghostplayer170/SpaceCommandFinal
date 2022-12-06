@@ -57,9 +57,9 @@ public class SaveAndLoad {
     }
 
     //LOAD DATA HISTORY
-     public ArrayList<String> loadDataHistory() {
+     public static ArrayList<ArrayList<String>> loadDataHistory() {
 
-        ArrayList<String> playerDataHistory = new ArrayList<>();
+        ArrayList<ArrayList<String>> playerDataHistory = new ArrayList<>();
         File archive;
         FileReader fr = null;
         BufferedReader br;
@@ -70,7 +70,7 @@ public class SaveAndLoad {
             br = new BufferedReader(fr);
             String linea;
             while ((linea = br.readLine()) != null)
-                playerDataHistory = loadPlayerData(linea);
+                playerDataHistory.add(loadPlayerData(linea));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -88,7 +88,7 @@ public class SaveAndLoad {
     }
 
     //LOAD PLAYER
-    public ArrayList<String> loadShip() {
+    public static ArrayList<String> loadShip() {
 
         ArrayList<String> playerData = new ArrayList<>();
         File archive;

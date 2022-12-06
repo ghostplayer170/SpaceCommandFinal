@@ -1,1 +1,1 @@
-pepe,ShipLight,RED;
+Unknown_Player,ShipLight,BLUE;
