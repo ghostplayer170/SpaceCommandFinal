@@ -75,7 +75,7 @@ public class Laser extends MovingObject{
 
     @Override
     public void paintComponent(GamePanel g) {
-        imgLabel = Functions.toImageJLabel(image);
+        imgLabel = Functions.imageToJLabel(image);
         imgLabel.setBounds((int)position.getX(),(int)position.getY(),width,height);
         g.add(imgLabel);
     }

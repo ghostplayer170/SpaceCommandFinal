@@ -49,7 +49,7 @@ public class Asteroid extends MovingObject{
 
     @Override
     public void paintComponent(GamePanel g) {
-        imgLabel = Functions.toImageJLabel(getBufferedImagePlayer());
+        imgLabel = Functions.imageToJLabel(getBufferedImagePlayer());
         imgLabel.setBounds((int)position.getX(), (int)position.getY(), 100, 100);
         g.add(imgLabel);
     }

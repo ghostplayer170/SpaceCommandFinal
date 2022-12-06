@@ -67,7 +67,7 @@ public class GamePanel extends CardsPanel implements Runnable{
             now = System.nanoTime();
             //MIENTRAS MENOR SEA EL TIEMPO MEJOR ES (NANOSEGUNDOS POR FOTOGRAMAS)
             int fps = 60;
-            double targetTime = 1_000_000_000 / fps;
+            double targetTime = 1000000000 / fps;
             delta += (now - lastTime)/ targetTime; //ACTUALIZAR TIEMPO (SE PRODUCE RETRASO)
             time += (now - lastTime);
             lastTime = now; //ACTUALIZA LAS VARIABLES

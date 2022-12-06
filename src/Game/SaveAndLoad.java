@@ -1,9 +1,10 @@
 package Game;
 
 import ObjectsGame.PlayerShip;
-
 import java.io.*;
 import java.util.ArrayList;
+
+import static Functions.Functions.loadPlayerData;
 
 public class SaveAndLoad {
 
@@ -56,17 +57,20 @@ public class SaveAndLoad {
     }
 
     //LOAD DATA HISTORY
-     public void loadDataHistory() {
+     public ArrayList<String> loadDataHistory() {
+
+        ArrayList<String> playerDataHistory = new ArrayList<>();
         File archive;
         FileReader fr = null;
         BufferedReader br;
+
         try {
             archive = new File("GameData.txt");
             fr = new FileReader(archive);
             br = new BufferedReader(fr);
             String linea;
             while ((linea = br.readLine()) != null)
-                System.out.println(linea);
+                playerDataHistory = loadPlayerData(linea);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -80,35 +84,23 @@ public class SaveAndLoad {
                 e2.printStackTrace();
             }
         }
+        return playerDataHistory;
     }
 
     //LOAD PLAYER
     public ArrayList<String> loadShip() {
+
+        ArrayList<String> playerData = new ArrayList<>();
         File archive;
         FileReader fr = null;
         BufferedReader br;
-        StringBuilder aux = new StringBuilder();
-        ArrayList<String> playerData = new ArrayList<>();
-        int letter = 0;
+
         try {
             archive = new File("PlayerData.txt");
             fr = new FileReader(archive);
             br = new BufferedReader(fr);
             String linea = br.readLine();
-            for(int i=0; i<linea.length(); ++i){
-                if(!Character.toString(linea.charAt(letter)).matches(",")
-                        && !Character.toString(linea.charAt(letter)).matches(";"))
-                {
-                    aux.append(linea.charAt(letter));
-                    ++letter;
-                }
-                else
-                {
-                    playerData.add(String.valueOf(aux));
-                    ++letter;
-                    aux.setLength(0);
-                }
-            }
+            playerData = loadPlayerData(linea);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

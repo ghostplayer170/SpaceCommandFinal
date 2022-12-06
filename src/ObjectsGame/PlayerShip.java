@@ -47,7 +47,7 @@ public abstract class PlayerShip extends MovingObject implements SpaceShip {
     public void setPilot(String pilot){this.pilot = pilot;}
     public abstract void setColor(TypeColor typeColor);
     public void paintComponent(GamePanel g) {
-        imgLabel = Functions.toImageJLabel(getBufferedImagePlayer());
+        imgLabel = Functions.imageToJLabel(getBufferedImagePlayer());
         imgLabel.setBounds((int)position.getX(), (int)position.getY(), 110, 110);
         g.add(imgLabel);
     }
