@@ -7,7 +7,7 @@ import Factory.*;
 import ObjectsGame.Types.TypeColor;
 import javax.swing.*;
 
-public class SelectionPanel extends JPanel {
+public class SelectionPanel extends Panels {
     public final int WIDTHBTN = 120, HEIGHTBTN = 85; //DIMENSIONES DE BOTONES
     private final FactorySpaceShip factory;
     private JTextField nameField;
@@ -27,6 +27,8 @@ public class SelectionPanel extends JPanel {
     }
     private void buildPanel(){
         setLayout(null);
+
+        setBackground(spaceImage);
 
         JButton backButton = new JButton("BACK");
         backButton.setBounds(10,10,70,25);

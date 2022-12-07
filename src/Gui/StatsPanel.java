@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import static Functions.Functions.playerDataFromHistory;
 import static Game.SaveAndLoad.loadDataHistory;
 
-public class StatsPanel extends JPanel {
-    private Thread threadOne;
-    private Thread threadTwo;
+public class StatsPanel extends Panels {
+    private JPanel canvasLabel;
     public StatsPanel(){
         buildPanel();
     }
     private void buildPanel(){
         setLayout(null);
+
+        setBackground(spaceImage);
 
         JButton tryAgainButton = new JButton("TRY AGAIN");
         tryAgainButton.setBounds(775,10,100,25);
@@ -29,37 +30,60 @@ public class StatsPanel extends JPanel {
         titleLabel.setFont(new Font("Tahoma", Font.BOLD, 85));
         add(titleLabel);
 
-        tryAgainButton.addActionListener(e-> ControlCards.showGamePnl());
-        backButton.addActionListener(e-> ControlCards.showStartPnl());
+        JButton statsButton = new JButton("SHOW SCORE");
+        statsButton.setBounds(375,370,150,50);
+        add(statsButton);
 
-        loadData();
+        canvasLabel = new JPanel();
+        canvasLabel.setBounds(250,275,600,600);
+        canvasLabel.setLayout(new BoxLayout(canvasLabel, BoxLayout.PAGE_AXIS));
+        canvasLabel.add(Box.createRigidArea(new Dimension(10,50)));
+        add(canvasLabel);
 
+        statsButton.addActionListener(e -> {
+            statsButton.setVisible(false);
+            buildScore(loadData());
+            add(canvasLabel);
+        });
+
+        tryAgainButton.addActionListener(e-> {
+            statsButton.setVisible(true);
+            canvasLabel.removeAll();
+            add(statsButton);
+            ControlCards.showGamePnl();
+        });
+        backButton.addActionListener(e-> {
+            statsButton.setVisible(true);
+            canvasLabel.removeAll();
+            add(statsButton);
+            ControlCards.showStartPnl();
+        });
     }
-    private void loadData(){
-        ArrayList<String> playerDataScore = new ArrayList<>(playerDataFromHistory(loadDataHistory()));
-        //playerDataScore = playerDataFromHistory(loadDataHistory());
+    private ArrayList<String> loadData(){
+        return new ArrayList<>(playerDataFromHistory(loadDataHistory()));
+    }
 
+    private void buildScore(ArrayList<String> playerDataScore){
         int posx=250, posy=275, width=450, height=150, fontSize=30;
 
         JLabel nameLabel = new JLabel("PILOT : " + playerDataScore.get(0).toUpperCase());
         nameLabel.setBounds(posx,posy,width,height);
         nameLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-        add(nameLabel);
+        canvasLabel.add(nameLabel);
 
         JLabel shipLabel = new JLabel("SHIP : " + playerDataScore.get(1).toUpperCase());
         shipLabel.setBounds(posx,posy+50,width,height);
         shipLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-        add(shipLabel);
+        canvasLabel.add(shipLabel);
 
         JLabel shipColorLabel = new JLabel("COLOR : " + playerDataScore.get(2).toUpperCase());
         shipColorLabel.setBounds(posx,posy+100,width,height);
         shipColorLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-        add(shipColorLabel);
+        canvasLabel.add(shipColorLabel);
 
         JLabel scoreLabel = new JLabel("SCORE : " + playerDataScore.get(3));
         scoreLabel.setBounds(posx,posy+150,width,height);
         scoreLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-        add(scoreLabel);
+        canvasLabel.add(scoreLabel);
     }
-
 }

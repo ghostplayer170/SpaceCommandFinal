@@ -22,14 +22,16 @@ public class MainFrame extends JFrame{
         framePanel.setLayout(cardLayout);
 
         StartPanel startPnl = new StartPanel();
-        SelectionPanel selectionPnl = new SelectionPanel();
-        StatsPanel statsPnl = new StatsPanel();
-        GamePanel gamePnl = new GamePanel();
-
         framePanel.add(startPnl,"StartPanel");
+
+        SelectionPanel selectionPnl = new SelectionPanel();
         framePanel.add(selectionPnl,"SelectionPanel");
+
+        GamePanel gamePnl = new GamePanel();
         framePanel.add(gamePnl,"GamePanel");
-        framePanel.add(statsPnl,"StatsPanel");
+
+        StatsPanel statsPnl = new StatsPanel();
+        framePanel.add(statsPnl, "StatsPanel");
 
         new ControlCards(this);
 
