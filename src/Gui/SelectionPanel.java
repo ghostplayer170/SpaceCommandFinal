@@ -6,6 +6,7 @@ import ObjectsGame.*;
 import Factory.*;
 import ObjectsGame.Types.TypeColor;
 import javax.swing.*;
+import java.awt.*;
 
 public class SelectionPanel extends Panels {
     public final int WIDTHBTN = 120, HEIGHTBTN = 85; //DIMENSIONES DE BOTONES
@@ -34,28 +35,40 @@ public class SelectionPanel extends Panels {
         backButton.setBounds(10,10,70,25);
         add(backButton);
 
+        int fontSize = 15;
+
         JLabel selection1Label = new JLabel("ENTER YOUR NAME");
-        selection1Label.setBounds(390,60,200,30);
+        selection1Label.setBounds(310,60,300,30);
+        selection1Label.setFont(new Font("Tahoma", Font.BOLD, fontSize*2));
+        selection1Label.setForeground(Color.WHITE);
         add(selection1Label);
 
         nameField = new JTextField();
-        nameField.setBounds(350,100,200,30);
+        nameField.setBounds(350,125,200,30);
         add(nameField);
 
         JLabel selection2Label = new JLabel("SELECT YOUR SHIP");
-        selection2Label.setBounds(390,190,200,30);
+        selection2Label.setBounds(310,190,400,30);
+        selection2Label.setFont(new Font("Tahoma", Font.BOLD, fontSize*2));
+        selection2Label.setForeground(Color.WHITE);
         add(selection2Label);
 
         JLabel selLightLabel = new JLabel("LIGHT CRUISER");
         selLightLabel.setBounds(75,280,200,30);
+        selLightLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        selLightLabel.setForeground(Color.WHITE);
         add(selLightLabel);
 
         JLabel selHeavyLabel = new JLabel("HEAVY CRUISER");
         selHeavyLabel.setBounds(75,405,200,30);
+        selHeavyLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        selHeavyLabel.setForeground(Color.WHITE);
         add(selHeavyLabel);
 
         JLabel selStarLabel = new JLabel("STAR CRUISER");
         selStarLabel.setBounds(75,530,200,30);
+        selStarLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        selStarLabel.setForeground(Color.WHITE);
         add(selStarLabel);
 
         //LIGHTCRUISER

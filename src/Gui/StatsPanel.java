@@ -28,6 +28,7 @@ public class StatsPanel extends Panels {
         JLabel titleLabel = new JLabel("GAME OVER");
         titleLabel.setBounds(200,100,700,150);
         titleLabel.setFont(new Font("Tahoma", Font.BOLD, 85));
+        titleLabel.setForeground(Color.WHITE);
         add(titleLabel);
 
         JButton statsButton = new JButton("SHOW SCORE");
@@ -35,10 +36,10 @@ public class StatsPanel extends Panels {
         add(statsButton);
 
         canvasLabel = new JPanel();
-        canvasLabel.setBounds(250,275,600,600);
+        canvasLabel.setBounds(245,275,450,200);
         canvasLabel.setLayout(new BoxLayout(canvasLabel, BoxLayout.PAGE_AXIS));
-        canvasLabel.add(Box.createRigidArea(new Dimension(10,50)));
-        add(canvasLabel);
+        canvasLabel.add(Box.createRigidArea(new Dimension(5,5)));
+        canvasLabel.setBackground(Color.darkGray);
 
         statsButton.addActionListener(e -> {
             statsButton.setVisible(false);
@@ -69,21 +70,25 @@ public class StatsPanel extends Panels {
         JLabel nameLabel = new JLabel("PILOT : " + playerDataScore.get(0).toUpperCase());
         nameLabel.setBounds(posx,posy,width,height);
         nameLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        nameLabel.setForeground(Color.WHITE);
         canvasLabel.add(nameLabel);
 
         JLabel shipLabel = new JLabel("SHIP : " + playerDataScore.get(1).toUpperCase());
         shipLabel.setBounds(posx,posy+50,width,height);
         shipLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        shipLabel.setForeground(Color.WHITE);
         canvasLabel.add(shipLabel);
 
         JLabel shipColorLabel = new JLabel("COLOR : " + playerDataScore.get(2).toUpperCase());
         shipColorLabel.setBounds(posx,posy+100,width,height);
         shipColorLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        shipColorLabel.setForeground(Color.WHITE);
         canvasLabel.add(shipColorLabel);
 
         JLabel scoreLabel = new JLabel("SCORE : " + playerDataScore.get(3));
         scoreLabel.setBounds(posx,posy+150,width,height);
         scoreLabel.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+        scoreLabel.setForeground(Color.WHITE);
         canvasLabel.add(scoreLabel);
     }
 }

@@ -5,7 +5,7 @@ import States.GameState;
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends Panels implements Runnable{
+public class GamePanel extends JPanel implements Runnable{
     private  double delta = 0; //TIEMPO QUE VA PASANDO
     private Thread thread;
     private GameState gameState;

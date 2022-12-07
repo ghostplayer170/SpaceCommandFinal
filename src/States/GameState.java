@@ -44,7 +44,7 @@ public class GameState {
     private void createAsteroids(){
         double x, y;
         x = Math.random() * MainFrame.WIDTH-75;
-        y = MainFrame.HEIGHT+100;
+        y = MainFrame.HEIGHT+50;
         BufferedImage texture = Assets.bigs[(int)(Math.random()*Assets.bigs.length)];
         movingObjects.add(new Asteroid(new Vector2D(x,y), texture, this));
         ++asteroidsCreated;
