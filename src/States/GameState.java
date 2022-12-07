@@ -83,7 +83,7 @@ public class GameState {
         Vector2D pos = new Vector2D(800, 25);
         String scoreToString = Integer.toString(score);
         for(int i = 0; i < scoreToString.length(); i++) {
-            JLabel imgLabel = imageToJLabelScore(Assets.numbers[Integer.parseInt(scoreToString.substring(i, i + 1))]);
+            JLabel imgLabel = imageToJLabelNoScale(Assets.numbers[Integer.parseInt(scoreToString.substring(i, i + 1))]);
             imgLabel.setBounds((int)pos.getX(), (int)pos.getY(), 20, 20);
             g.add(imgLabel);
             pos.setX(pos.getX() + 20);

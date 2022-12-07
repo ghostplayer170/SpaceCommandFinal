@@ -1,1 +1,1 @@
-Unknown_Player,ShipLight,BLUE;
+Unknown_Player,ShipLight,RED;

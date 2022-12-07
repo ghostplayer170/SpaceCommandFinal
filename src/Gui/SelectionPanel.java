@@ -7,9 +7,19 @@ import Factory.*;
 import ObjectsGame.Types.TypeColor;
 import javax.swing.*;
 
-public class SelectionPanel extends CardsPanel {
+public class SelectionPanel extends JPanel {
     public final int WIDTHBTN = 120, HEIGHTBTN = 85; //DIMENSIONES DE BOTONES
     private final FactorySpaceShip factory;
+    private JTextField nameField;
+    private JButton shipLightButtonR;
+    private JButton shipHeavyButtonR;
+    private JButton shipStarButtonR;
+    private JButton shipLightButtonB;
+    private JButton shipHeavyButtonB;
+    private JButton shipStarButtonB;
+    private JButton shipLightButtonG;
+    private JButton shipHeavyButtonG;
+    private JButton shipStarButtonG;
     public SelectionPanel() {
         Assets.init();
         factory = new FactorySpaceShip();
@@ -18,79 +28,80 @@ public class SelectionPanel extends CardsPanel {
     private void buildPanel(){
         setLayout(null);
 
-        backButton = new JButton("BACK");
+        JButton backButton = new JButton("BACK");
         backButton.setBounds(10,10,70,25);
+        add(backButton);
 
-        selection1Label = new JLabel("ENTER YOUR NAME");
+        JLabel selection1Label = new JLabel("ENTER YOUR NAME");
         selection1Label.setBounds(390,60,200,30);
+        add(selection1Label);
 
         nameField = new JTextField();
         nameField.setBounds(350,100,200,30);
+        add(nameField);
 
-        selection2Label = new JLabel("SELECT YOUR SHIP");
+        JLabel selection2Label = new JLabel("SELECT YOUR SHIP");
         selection2Label.setBounds(390,190,200,30);
+        add(selection2Label);
 
-        selLightLabel = new JLabel("LIGHT CRUISER");
+        JLabel selLightLabel = new JLabel("LIGHT CRUISER");
         selLightLabel.setBounds(75,280,200,30);
+        add(selLightLabel);
 
-        selHeavyLabel = new JLabel("HEAVY CRUISER");
+        JLabel selHeavyLabel = new JLabel("HEAVY CRUISER");
         selHeavyLabel.setBounds(75,405,200,30);
+        add(selHeavyLabel);
 
-        selStarLabel = new JLabel("STAR CRUISER");
+        JLabel selStarLabel = new JLabel("STAR CRUISER");
         selStarLabel.setBounds(75,530,200,30);
+        add(selStarLabel);
 
         //LIGHTCRUISER
         shipLightButtonR = new JButton();
         shipLightButtonR.setIcon(new ImageIcon(Assets.lightCruiserRed));
         shipLightButtonR.setBounds(250,250,WIDTHBTN,HEIGHTBTN);
+        add(shipLightButtonR);
+
         shipLightButtonB = new JButton();
         shipLightButtonB.setIcon(new ImageIcon(Assets.lightCruiserBlue));
         shipLightButtonB.setBounds(450,250,WIDTHBTN,HEIGHTBTN);
+        add(shipLightButtonB);
+
         shipLightButtonG = new JButton();
         shipLightButtonG.setIcon(new ImageIcon(Assets.lightCruiserGreen));
         shipLightButtonG.setBounds(650,250,WIDTHBTN,HEIGHTBTN);
+        add(shipLightButtonG);
 
         //HEAVYCRUISER
         shipHeavyButtonR = new JButton();
         shipHeavyButtonR.setIcon(new ImageIcon(Assets.heavyCruiserRed));
         shipHeavyButtonR.setBounds(250,380,WIDTHBTN,HEIGHTBTN);
+        add(shipHeavyButtonR);
+
         shipHeavyButtonB = new JButton();
         shipHeavyButtonB.setIcon(new ImageIcon(Assets.heavyCruiserBlue));
         shipHeavyButtonB.setBounds(450,380,WIDTHBTN,HEIGHTBTN);
+        add(shipHeavyButtonB);
+
         shipHeavyButtonG = new JButton();
         shipHeavyButtonG.setIcon(new ImageIcon(Assets.heavyCruiserGreen));
         shipHeavyButtonG.setBounds(650,380,WIDTHBTN,HEIGHTBTN);
+        add(shipHeavyButtonG);
 
         //STARCRUISER
         shipStarButtonR = new JButton();
         shipStarButtonR.setIcon(new ImageIcon(Assets.starCruiserRed));
         shipStarButtonR.setBounds(250,510,WIDTHBTN,HEIGHTBTN);
+        add(shipStarButtonR);
+
         shipStarButtonB = new JButton();
         shipStarButtonB.setIcon(new ImageIcon(Assets.starCruiserBlue));
         shipStarButtonB.setBounds(450,510,WIDTHBTN,HEIGHTBTN);
+        add(shipStarButtonB);
+
         shipStarButtonG = new JButton();
         shipStarButtonG.setIcon(new ImageIcon(Assets.starCruiserGreen));
         shipStarButtonG.setBounds(650,510,WIDTHBTN,HEIGHTBTN);
-
-        add(backButton);
-        add(nameField);
-
-        add(selection1Label);
-        add(selection2Label);
-        add(selHeavyLabel);
-        add(selLightLabel);
-        add(selStarLabel);
-
-        add(shipLightButtonR);
-        add(shipHeavyButtonR);
-        add(shipStarButtonR);
-
-        add(shipLightButtonB);
-        add(shipHeavyButtonB);
-        add(shipStarButtonB);
-
-        add(shipLightButtonG);
-        add(shipHeavyButtonG);
         add(shipStarButtonG);
 
         shipLightButtonR.addActionListener(e -> selectedPlayer(shipLightButtonR));

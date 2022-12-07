@@ -101,3 +101,6 @@ Unknown_Player,ShipLight,RED,2;
 Unknown_Player,ShipLight,GREEN,2;
 Unknown_Player,ShipLight,BLUE,2;
 Unknown_Player,ShipLight,BLUE,6;
+Unknown_Player,ShipLight,BLUE,4;
+Unknown_Player,ShipLight,BLUE,2;
+Unknown_Player,ShipLight,BLUE,2;

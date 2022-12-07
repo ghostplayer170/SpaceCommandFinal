@@ -9,9 +9,7 @@ import Gui.MainFrame;
  * &#064;autor  Renato A. Montenegro Palma
  */
 public class Launcher {
-
     public static void main(String[] args) {
         new MainFrame();
     }
-
 }

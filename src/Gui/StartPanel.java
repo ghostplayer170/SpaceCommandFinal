@@ -1,25 +1,26 @@
 package Gui;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class StartPanel extends CardsPanel {
+public class StartPanel extends JPanel {
     public StartPanel() {
         buildPanel();
     }
-    void buildPanel(){
+    private void buildPanel(){
         setLayout(null);
 
-        titleLabel = new JLabel("SPACE COMMAND");
-        titleLabel.setBounds(400,300,150,40);
-
-        startButton = new JButton("START");
-        startButton.setBounds(375,370,150,50);
-
-        exitButton = new JButton("EXIT");
-        exitButton.setBounds(10,10,70,25);
-
+        JLabel titleLabel = new JLabel("SPACE COMMAND");
+        titleLabel.setBounds(125,100,700,300);
+        titleLabel.setFont(new Font("Tahoma", Font.BOLD, 70));
         add(titleLabel);
+
+        JButton startButton = new JButton("START");
+        startButton.setBounds(375,370,150,50);
         add(startButton);
+
+        JButton exitButton = new JButton("EXIT");
+        exitButton.setBounds(10,10,70,25);
         add(exitButton);
 
         startButton.addActionListener(e-> ControlCards.showSelectionPnl());
