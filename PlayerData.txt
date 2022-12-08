@@ -1,1 +1,1 @@
-Unknown_Player,ShipLight,BLUE;
+Renato,ShipStar,RED;

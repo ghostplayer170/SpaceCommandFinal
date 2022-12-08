@@ -36,10 +36,10 @@ public class StatsPanel extends Panels {
         add(statsButton);
 
         canvasLabel = new JPanel();
-        canvasLabel.setBounds(245,275,450,200);
+        canvasLabel.setBounds(245,300,450,200);
         canvasLabel.setLayout(new BoxLayout(canvasLabel, BoxLayout.PAGE_AXIS));
         canvasLabel.add(Box.createRigidArea(new Dimension(5,5)));
-        canvasLabel.setBackground(Color.darkGray);
+        canvasLabel.setOpaque(false);
 
         statsButton.addActionListener(e -> {
             statsButton.setVisible(false);

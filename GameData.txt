@@ -175,3 +175,5 @@ Unknown_Player,ShipLight,BLUE,2;
 Unknown_Player,ShipLight,GREEN,2;
 Unknown_Player,ShipLight,BLUE,2;
 Unknown_Player,ShipLight,BLUE,2;
+Unknown_Player,ShipLight,BLUE,8;
+Renato,ShipStar,RED,58;
